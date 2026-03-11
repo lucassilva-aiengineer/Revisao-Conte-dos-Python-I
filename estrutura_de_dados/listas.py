@@ -1,5 +1,5 @@
 from faker import Faker 
-from typing import List 
+from typing import List, Tuple
 import time
 # Listas 
 
@@ -140,19 +140,127 @@ de nomes que você pretende acessar:  """))
                 time.sleep(2)
 
 
+    # Adicionando elementos
 
-    # def 
+    def adicionando_elementos()-> None:
+
+        pessoas: List[Tuple[str, int]] = []
+
+        while True:
+
+            print("============ Opção ============")
+            print("\nPara adicionar mais uma pessoa digite A")
+            print("Para ver os nome adicionados digite V")
+            print("Para sair digite S\n")
+
+            opcao = input("Indique a sua opção: ").upper()
+
+            if opcao == "A":
+
+                print("Indique o nome: ")
+                nome = input("").title()
+
+                idade = int(input("Indique a idade: "))
+
+                tupla_pessoa = (nome, idade)
+                pessoas.append(tupla_pessoa)
+
+
+            elif opcao == "V":
+
+                for tupla_pessoa in pessoas: 
+
+                    print(f"""
+=========================
+Nome: {tupla_pessoa[0]}
+Idade: {tupla_pessoa[1]}\n""")                
+
+
+            elif opcao == "S":
+
+                print("Saindo...")
+                time.sleep(2)
+
+                # Criando um arquivo texto com os nomes salvos 
+
+                print("Salvando nomes...")
+                time.sleep(2)
+
+                with open('estrutura_de_dados/salvar_nomes.txt', 'a') as file:
+                    for tupla in pessoas:
+
+                        texto = f"Nome: {tupla[0]}   idade: {tupla[1]}\n"
+                        file.write(texto)
+
+                break 
+
+            else: 
+
+                print("Opção não encontranda...")
+                time.sleep(2)
+
+                print("Tentando novamente...")
+                time.sleep(2)
 
 
 
 
+    # adicionando_elementos()
+
+    def inserindo_elementos()-> None:
+
+        lista_pessoa_a = ["Mateus", "Marcos", "João", "Lucas"]
+
+        
+        def mostrar_nome_indice(lista: List[str])-> None:
+            for i in range(len(lista)):
+
+                print("Indice:", i, "Nome:", lista[i])
+
+
+        while True:
+
+            print("Para inserir algum nome a um índice epecífico digite A.")
+            print("Para ver a lista de nomes como os índices digite V.")
+            print("Para sair digite S.")
+
+
+            opcao = input("Indique a sua opção: ").lower()
+
+            if opcao == "a": 
+
+                # if len()
+
+                indice = int(input("Indique o índice que você quer alterar: "))
+
+                if indice < len(lista_pessoa_a):
+                    
+                    nome = input("Indique o nome que ocupará a lista nesta posição: ")
+                    lista_pessoa_a.insert(indice, nome) 
+
+                    print("Nome adicionado com sucesso!")
+                    time.sleep(2)
+
+                    print("...")
+                    time.sleep(2)
+
+    def removendo_elementos():
+
+        lista_a = ["Marcos", "João", "Jonathas"]
+
+        return lista_a.pop()
+
+    removendo_elementos()
 def main():
 
     # manipulando_lista()
 
-    minha_lista() 
+    # minha_lista() 
 
     # trocando_nomes()
+
+    print(f"Elemento removido: {minha_lista()}")
+
 
 
 if __name__ == '__main__':
